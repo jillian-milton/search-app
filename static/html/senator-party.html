@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US Senator Search</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/party.css">
+</head>
+<body>
+    <main>
+        <h1>Search By Political Party</h1>
+        <form action="/senator" method="GET">
+            <label for="senator">Enter a Party:</label>
+            <input type="text" id="senator" name="q">
+            <button type="submit">Search</button>
+            <a href="../html/senator.html"> Search by Senator </a>
+        </form>
+    </main>
+   
+    <div class="results">
+
+
+    </div>
+    <script>
+        let form = document.querySelector('form');
+        let q = document.querySelector('input[name="q"]');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            let url = "/senator/party/" + q.value;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    // Clear any previous results
+                    document.querySelector('.results').innerHTML = '';
+                    
+                    // Output new results
+                    data.forEach(senator => {
+
+                        let div = document.createElement('div');
+                        div.innerHTML = `
+                            <h2>${senator.person.firstname} ${senator.person.lastname}</h2>
+                            <p>${senator.party}</p>
+                            <hr>
+                        `;
+                        document.querySelector('.results').appendChild(div);
+                    });
+                });
+        });
+ </script>
+
+
+    
+</body>
+</html>

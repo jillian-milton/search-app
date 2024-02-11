@@ -1,0 +1,38 @@
+h2{
+    color: red;
+    padding: 12px;
+}
+
+p{
+    color: blue;
+    font-size: 18px;
+    padding-left: 12px;
+}
+
+hr{
+    border-top: 2px solid navy;
+}
+
+main{
+    background-image: url('https://cdn7.dissolve.com/p/D1028_74_849/D1028_74_849_1200.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+h1, label{
+    color: white;
+    padding: 12px;
+    font-weight: bold;
+}
+
+
+a{
+    padding: 110px;
+    color: navy;
+    font-weight: bold;
+}
+
+a:hover{
+    color: navy;
+}
