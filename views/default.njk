@@ -1,0 +1,16 @@
+{% extends "parent.njk" %}
+
+{% block main %}
+    <link rel="stylesheet" href="../css/pickle.css" >
+    <h1>Rick and Morty Character List</h1>
+    
+        {% for  character in data.results %}
+         <div>
+             <a href='/character/{{character.id}}' class="flex">
+                <img src="{{ character.image }}" height="200" width="200">
+                <h2>{{character.name}}</h2>
+            </a>
+         </div>
+           
+        {% endfor %}
+{% endblock %}

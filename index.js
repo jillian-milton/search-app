@@ -1,8 +1,16 @@
 const express = require('express')
-
+const nunjucks = require('nunjucks')
+// Import JSON dataset
+const data = require("./data.json")
 const app = express()
+const port = 3000   
 
-const port = 3000
+// Tell nunjucks where your template files are located (e.g., 'views' directory)
+nunjucks.configure('views', {
+    autoescape: true,
+    noCache: true, // <-- Should only be true when developing
+    express: app
+});
 
 let senator = 
     {
@@ -5213,3 +5221,25 @@ app.get('/senator/party/:q', (req, res) => {
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
+
+// Rick and Morty Assignment Week 6
+
+// Endpoint for /characters shows all characters
+app.get('/characters', function (req, res) {
+    res.render('default.njk', { 
+        title: "Rick and Morty", 
+        data: data
+    });
+});
+
+
+
+// Endpoint for /characters/:id shows details for ONE characer
+app.get('/character/:id', function (req, res) {
+    let id = req.params.id - 1;
+
+    res.render('characters.njk', { 
+        title: "Character Info", 
+        character: data.results[id]
+    });
+});

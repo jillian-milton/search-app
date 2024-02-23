@@ -1,0 +1,21 @@
+{% extends "parent.njk" %}
+
+{% block main %}
+    <link rel="stylesheet" href="../css/rick.css" >
+    <h1> {{ character.name }} Identity Card </h1>
+    <section class="flex">
+        <div>
+            <img src="{{ character.image }}" height="200" width="200">
+        </div>
+             
+       <div>
+            <h2>{{character.name}}</h2>
+            <h3>Gender: {{character.gender}}</h3>
+            <h4>Species: {{character.species}}</h4>
+       </div>
+    </section>
+     <button> <a href='/characters'>Back</a></button>
+    
+    
+
+{% endblock %}
